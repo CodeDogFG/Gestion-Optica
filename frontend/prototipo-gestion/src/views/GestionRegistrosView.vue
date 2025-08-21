@@ -9,6 +9,7 @@ const registros = ref([
     tipo: 'Activo Fijo',
     estado: 'Asignado',
     asignadoA: 'Juan Pérez',
+    fecha: '10-10-2024',
   },
   {
     id: 'REG-002',
@@ -16,6 +17,7 @@ const registros = ref([
     tipo: 'Solicitud de Compra',
     estado: 'Nuevo',
     asignadoA: 'N/A',
+    fecha: '11-01-2025',
   },
   {
     id: 'REG-003',
@@ -23,6 +25,7 @@ const registros = ref([
     tipo: 'Incidencia',
     estado: 'En Progreso',
     asignadoA: 'Ana Torres',
+    fecha: '12-03-2025',
   },
   {
     id: 'REG-004',
@@ -30,6 +33,15 @@ const registros = ref([
     tipo: 'Tarea de Mantenimiento',
     estado: 'Nuevo',
     asignadoA: 'N/A',
+    fecha: '13-04-2025',
+  },
+  {
+    id: 'REG-005',
+    descripcion: 'Merma detectada en inventario de {x} producto',
+    tipo: 'Merma Detectada',
+    estado: 'Por Revisar',
+    asignadoA: 'Carlos López',
+    fecha: '14-05-2025',
   },
 ])
 </script>
@@ -63,7 +75,7 @@ const registros = ref([
             <option>Solicitud de Compra</option>
             <option>Activo Fijo</option>
             <option>Incidencia</option>
-            <option>Tarea de Mantenimiento</option>
+            <option>Merma Detectada</option>
           </select>
         </div>
 
@@ -91,6 +103,7 @@ const registros = ref([
               <th scope="col" class="px-6 py-3">Estado</th>
               <th scope="col" class="px-6 py-3">Asignado a</th>
               <th scope="col" class="px-6 py-3 text-center">Acciones</th>
+              <th scope="col" class="px-6 py-3">Fecha</th>
             </tr>
           </thead>
           <tbody>
@@ -109,6 +122,7 @@ const registros = ref([
                     'bg-green-100 text-green-800':
                       registro.estado === 'Asignado' || registro.estado === 'En Progreso',
                     'bg-blue-100 text-blue-800': registro.estado === 'Nuevo',
+                    'bg-yellow-100 text-yellow-800': registro.estado === 'Por Revisar',
                   }"
                 >
                   {{ registro.estado }}
